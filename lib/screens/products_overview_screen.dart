@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lllllllllll/screens/cart_screen.dart';
 import '/widgets/badge.dart';
 import 'package:provider/provider.dart';
 import '../provider/cart.dart';
@@ -49,18 +50,22 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ),
               ];
             },
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
           ),
+         IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, CartScreen.routeName);
+                  },
+                  icon: const Icon(Icons.shopping_cart),iconSize: 20,
+                ),
           Consumer<Cart>(
             builder: (context, cart, chi) => BadgeFile(
+              
                 value: cart.itemCount.toString(),
-                //child: chi,
+                
                 color: Theme.of(context).colorScheme.secondary,
                 ),
-                child:  IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.shopping_cart),iconSize: 8,alignment: Alignment.bottomRight, 
-                ),
+              
           )
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/screens/cart_screen.dart';
 import '/provider/cart.dart';
 import '/product_detail_screen.dart';
 import '/screens/products_overview_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
             primarySwatch: Colors.deepPurple,
@@ -32,8 +34,8 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Lato'),
         home: const ProductsOverviewScreen(),
         routes: {
-          ProductDetailScreen.routeName: (context) =>
-              const ProductDetailScreen(),
+          ProductDetailScreen.routeName: (context) => const ProductDetailScreen(),
+          CartScreen.routeName :(context) => const CartScreen()
         },
       ),
     );

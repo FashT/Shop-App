@@ -13,7 +13,18 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  late Map<String, CartItem> _items = {};
+  late final Map<String, CartItem> _items = {};
+
+
+  double get totalAmount {
+double total = 0;
+_items.forEach((key, cartItem) { 
+total +=  cartItem.price * cartItem.quantity  ;
+});
+
+
+    return total  ;
+  }
 
   Map<String, CartItem> get items {
     return {..._items};
