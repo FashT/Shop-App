@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import '../widgets/cart_iteeeem.dart';
+import '../widgets/cart_iteeeem.dart';
 import '../provider/cart.dart';
 
 class CartScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context);
+    final cart = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('You Cart'),
@@ -55,17 +55,18 @@ class CartScreen extends StatelessWidget {
               ),
             ),
           ),
-        //   Expanded(
-        //     child: ListView.builder(
-        //       itemCount: cart.itemCount,
-        //       itemBuilder: (buildContext, index) => CartIteeeem(
-        //         id: cart.items.values.toList()[index].id,
-        //         price: cart.items.values.toList()[index].price,
-        //         quantity: cart.items.values.toList()[index].quantity,
-        //         title: cart.items.values.toList()[index].title,
-        //       ),
-        //     ),
-        //   ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: cart.itemCount,
+              itemBuilder: (buildContext, index) => CartIteeeem(
+                productId: cart.items.keys.toList()[index],
+                id: cart.items.values.toList()[index].id,
+                price: cart.items.values.toList()[index].price,
+                quantity: cart.items.values.toList()[index].quantity,
+                title: cart.items.values.toList()[index].title,
+              ),
+            ),
+          ),
         ],
       ),
     );

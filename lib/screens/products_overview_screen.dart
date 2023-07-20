@@ -66,9 +66,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 color: Theme.of(context).colorScheme.secondary,
                 ),
               
-          )
+          ),
         ],
       ),
+      body: ProductsGrid(_showOnlyFavourites),
     );
   }
 }

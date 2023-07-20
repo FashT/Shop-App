@@ -55,4 +55,8 @@ return _items.length;
     }
     notifyListeners();
   }
+  void removeItem(String productId){
+    _items.remove(productId);
+    notifyListeners();
+  }
 }

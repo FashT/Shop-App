@@ -1,32 +1,60 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/cart.dart';
 
-// class CartIteeeem extends StatelessWidget {
-//   final String id;
-//   final double price;
-//   final int quantity;
-//   final String title;
+class CartIteeeem extends StatelessWidget {
+  final String id;
+  final  String productId;
+  final double price;
+  final int quantity;
+  final String title;
 
-//   const CartIteeeem(
-//       {required this.id,
-//       required this.price,
-//       required this.quantity,
-//       required this.title});
+  const CartIteeeem(
+      {
+        required this.id,
+      required this.productId,
+      required this.price,
+      required this.quantity,
+      required this.title});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-//       child: Padding(
-//         padding: const EdgeInsets.all(8),
-//         child: ListTile(
-//           leading: CircleAvatar(
-//             child: Text('\$$price}'),
-//           ),
-//           subtitle: Text('Total: \$${(price * quantity)}'),
-//           title: Text(title),
-//           trailing: Text('$quantity x' ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Dismissible(
+      key: ValueKey(id),
+      background: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        color: Theme.of(context).colorScheme.secondary,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(
+          right: 20,
+        ),
+        child: const Icon(
+          Icons.delete,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
+      direction: DismissDirection.endToStart,
+      onDismissed: (direction) => (direction) {
+ Provider.of<Cart>(context, listen: false).removeItem(productId);
+      },
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListTile(
+            leading: CircleAvatar(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FittedBox(child: Text('\$$price}')),
+              ),
+            ),
+            subtitle: Text('Total: \$${(price * quantity)}'),
+            title: Text(title),
+            trailing: Text('$quantity x'),
+          ),
+        ),
+      ),
+    );
+  }
+}
