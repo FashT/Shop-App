@@ -13,7 +13,7 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  late final Map<String, CartItem> _items = {};
+   final Map<String, CartItem> _items = {};
 
 
   double get totalAmount {
@@ -59,4 +59,12 @@ return _items.length;
     _items.remove(productId);
     notifyListeners();
   }
+void clearAll(){
+  _items.clear();
+  notifyListeners();
+}
+void clear(){
+  _items.clear();
+}
+
 }

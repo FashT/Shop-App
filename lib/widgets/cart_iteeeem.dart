@@ -10,7 +10,7 @@ class CartIteeeem extends StatelessWidget {
   final String title;
 
   const CartIteeeem(
-      {
+      {super.key, 
         required this.id,
       required this.productId,
       required this.price,
@@ -19,6 +19,7 @@ class CartIteeeem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final cart1 = Provider.of<Cart>(context, listen: false);
     return Dismissible(
       key: ValueKey(id),
       background: Container(
@@ -35,8 +36,8 @@ class CartIteeeem extends StatelessWidget {
         ),
       ),
       direction: DismissDirection.endToStart,
-      onDismissed: (direction) => (direction) {
- Provider.of<Cart>(context, listen: false).removeItem(productId);
+      onDismissed: (direction)  {
+cart1.removeItem(productId);
       },
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
