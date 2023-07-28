@@ -4,14 +4,14 @@ import '../provider/cart.dart';
 
 class CartIteeeem extends StatelessWidget {
   final String id;
-  final  String productId;
+  final String productId;
   final double price;
   final int quantity;
   final String title;
 
   const CartIteeeem(
-      {super.key, 
-        required this.id,
+      {super.key,
+      required this.id,
       required this.productId,
       required this.price,
       required this.quantity,
@@ -19,7 +19,7 @@ class CartIteeeem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final cart1 = Provider.of<Cart>(context, listen: false);
+    final cart1 = Provider.of<Cart>(context, listen: false);
     return Dismissible(
       key: ValueKey(id),
       background: Container(
@@ -36,8 +36,17 @@ class CartIteeeem extends StatelessWidget {
         ),
       ),
       direction: DismissDirection.endToStart,
-      onDismissed: (direction)  {
-cart1.removeItem(productId);
+      // confirmDismiss: (direction) {
+      //   showBottomSheet(
+      //       context: context,
+      //       builder: (buildContext) {
+      //         return AlertDialog(
+      //           content: ,
+      //         );
+      //       });
+      // },
+      onDismissed: (direction) {
+        cart1.removeItem(productId);
       },
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),

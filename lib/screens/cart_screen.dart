@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lllllllllll/provider/order.dart';
 import 'package:provider/provider.dart';
 import '../widgets/cart_iteeeem.dart';
 import '../provider/cart.dart';
@@ -42,11 +41,8 @@ class CartScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                   
-                  cart.clear();
+                      cart.clearAll();
                     },
-                    
-                    
                     style: TextButton.styleFrom(
                       foregroundColor: Theme.of(context).primaryColor,
                     ),
