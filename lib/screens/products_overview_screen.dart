@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lllllllllll/screens/cart_screen.dart';
+import '/screens/cart_screen.dart';
 import 'package:lllllllllll/widgets/drawer.dart';
 import '/widgets/badge.dart';
 import 'package:provider/provider.dart';
